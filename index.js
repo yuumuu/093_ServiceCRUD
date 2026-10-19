@@ -49,7 +49,7 @@ app.put('/biodata/:id', (req, res) => {
     const { nama, nim, kelas } = req.body;
 
     pool.query(
-        `UPDATE biodata SET nama = $1, nim = $2, kelas = $3, WHERE id = $4`,
+        `UPDATE biodata SET nama = $1, nim = $2, kelas = $3 WHERE id = $4`,
         [nama, nim, kelas, id]
     )
         .then(result => {
@@ -65,8 +65,6 @@ app.put('/biodata/:id', (req, res) => {
         })
         .catch(err => {
             console.error(err);
-            res.status(500).json({
-                message: "Terjadi kesalahan pada server"
-            });
+            res.status(500).send("Terjadi kesalahan pada server");
         })
 })
