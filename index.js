@@ -93,3 +93,7 @@ app.delete('/biodata/:id', (req, res) => {
             res.status(500).send("Terjadi kesalahan pada server");
         });
 });
+
+app.listen(port, () => {
+    console.log(`App running on port ${port}.`);
+})
